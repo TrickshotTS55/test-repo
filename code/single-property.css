@@ -595,11 +595,16 @@
 }
 
 /* ==========================================================
-   NAVIGATION — keep dark text on light header
+   NAVIGATION — dark text ONLY on property single + archive
+   (Homepage and other pages keep their original white nav)
    ========================================================== */
-header[data-elementor-type="header"] .elementor-item,
-header[data-elementor-type="header"] .elementor-item:visited,
-header[data-elementor-type="header"] .elementor-item:hover,
-header[data-elementor-type="header"] a {
+.single-property header[data-elementor-type="header"] .elementor-item,
+.single-property header[data-elementor-type="header"] .elementor-item:visited,
+.single-property header[data-elementor-type="header"] .elementor-item:hover,
+.single-property header[data-elementor-type="header"] a,
+.post-type-archive-property header[data-elementor-type="header"] .elementor-item,
+.post-type-archive-property header[data-elementor-type="header"] .elementor-item:visited,
+.post-type-archive-property header[data-elementor-type="header"] .elementor-item:hover,
+.post-type-archive-property header[data-elementor-type="header"] a {
     color: #22344B !important;
 }
