@@ -22,7 +22,7 @@ These are the exact field names as configured in WordPress ACF:
 | 6 | Distance to beach  | `distance_to_beach`  | Number | Mapped from feature[8] in XML              |
 | 7 | Distance to airport| `distance_to_airport`| Number | Mapped from feature[9] in XML              |
 | 8 | Features           | `features`           | Text   | All features as text (comma/newline sep.)  |
-| 9 | Ref.               | `ref`                | Number | Property reference (e.g. IS-89171)         |
+| 9 | Ref.               | `ref`                | Text   | Property reference (e.g. IS-89171) — must be Text, not Number |
 |10 | Description        | `description`        | Text   | English description (plain text)           |
 
 ---

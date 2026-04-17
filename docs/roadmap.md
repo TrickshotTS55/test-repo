@@ -7,17 +7,19 @@ Work through these phases in order. Each phase is a prerequisite for the next.
 ---
 
 ## Phase 1 — Foundation (ACF + XML Import)
-**Status: IN PROGRESS**
+**Status: ALMOST DONE — 1 fix needed**
 
 Goal: Get all property data from the XML feed correctly stored in WordPress.
 
 ### Steps:
 - [x] ACF Field Group "Property Details" created with basic fields
-- [ ] **Add missing ACF fields** (see `docs/property-import.md` — "Fields To Add")
-      Priority fields: `property_type`, `province`, `urbanisation`, `pool`, `latitude`, `longitude`, `description_de`, `gallery`
-- [ ] Update WP All Import mapping to include new fields
-- [ ] Re-run test import with all 3 test properties
-- [ ] Verify all fields are populated correctly in WordPress
+- [x] Added missing ACF fields: `property_type`, `province`, `urbanisation`, `pool`, `latitude`, `longitude`, `description_de`
+- [x] Updated WP All Import mapping for all new fields
+- [x] Re-ran import — all key fields populated correctly
+- [ ] **Fix: Change `ref` field type from Number → Text** (XML value is "IS-89171", not a number)
+- [ ] Re-run import after ref fix, verify ref populated
+- [x] `distance_to_beach` / `distance_to_airport` — intentionally left empty, info comes from `features` field instead
+- [ ] Set up live XML feed URL for automatic sync (later)
 - [ ] Set up live XML feed URL (replace manual upload)
 
 ---
