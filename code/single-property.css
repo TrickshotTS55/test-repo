@@ -1,0 +1,605 @@
+/* ==========================================================
+   PURA VIDA REAL ESTATE — Single Property Template CSS
+   Paste into: Appearance → Customize → Additional CSS
+   (Replace all previous property-related CSS)
+   ========================================================== */
+
+/* --- GALLERY HERO --- */
+.pura-gallery-hero {
+    display: grid;
+    grid-template-columns: 62% 38%;
+    gap: 6px;
+    margin-bottom: 32px;
+}
+
+.pura-gallery-main {
+    height: 520px;
+    overflow: hidden;
+    border-radius: 3px 0 0 3px;
+    cursor: pointer;
+}
+
+.pura-gallery-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.pura-gallery-main:hover img {
+    transform: scale(1.02);
+}
+
+.pura-gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 6px;
+}
+
+.pura-grid-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.pura-grid-item:last-child {
+    border-radius: 0 0 3px 0;
+}
+
+.pura-grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.pura-grid-item:hover img {
+    transform: scale(1.04);
+}
+
+.pura-see-all {
+    position: absolute;
+    inset: 0;
+    background: rgba(238, 238, 232, 0.88);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: #22344B;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.pura-see-all:hover {
+    background: rgba(238, 238, 232, 0.96);
+}
+
+/* --- INFO BAR --- */
+.pura-info-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 36px 0;
+    border-bottom: 1px solid rgba(34, 52, 75, 0.1);
+}
+
+.pura-info-left {
+    flex: 1;
+    min-width: 0;
+}
+
+.pura-title {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 46px !important;
+    font-weight: 400 !important;
+    color: #22344B !important;
+    line-height: 1.15 !important;
+    margin: 0 0 22px 0 !important;
+    letter-spacing: -0.01em;
+}
+
+.pura-cta-btn {
+    display: inline-block;
+    background: #C9A84C;
+    color: #22344B !important;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-decoration: none;
+    padding: 15px 34px;
+    border-radius: 50px;
+    transition: background 0.2s ease, transform 0.15s ease;
+    margin-bottom: 12px;
+}
+
+.pura-cta-btn:hover {
+    background: #b8953e;
+    transform: translateY(-1px);
+}
+
+.pura-cta-sub {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 13px !important;
+    color: rgba(34, 52, 75, 0.6) !important;
+    margin: 0 !important;
+    line-height: 1.4;
+}
+
+.pura-info-right {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.pura-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 500;
+    color: #22344B;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.pura-ref {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: rgba(34, 52, 75, 0.55);
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+}
+
+.pura-specs {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0;
+}
+
+.pura-spec {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    border-left: 1px solid rgba(34, 52, 75, 0.15);
+}
+
+.pura-spec:first-child {
+    border-left: none;
+}
+
+.pura-spec-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: rgba(34, 52, 75, 0.5);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.pura-spec-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    color: #22344B;
+    line-height: 1;
+}
+
+/* --- TABS --- */
+.pura-tabs-wrap {
+    margin-top: 0;
+}
+
+.pura-tabs-nav {
+    display: flex;
+    border-bottom: 1px solid rgba(34, 52, 75, 0.12);
+    margin-bottom: 52px;
+    gap: 0;
+}
+
+.pura-tab {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 18px 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(34, 52, 75, 0.45);
+    cursor: pointer;
+    margin-bottom: -1px;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+}
+
+.pura-tab.active,
+.pura-tab:hover {
+    color: #C9A84C;
+    border-bottom-color: #C9A84C;
+}
+
+.pura-tab-content {
+    display: none;
+}
+
+.pura-tab-content.active {
+    display: block;
+}
+
+/* --- DESCRIPTION TAB — TWO COLUMN LAYOUT --- */
+.pura-two-col {
+    display: grid;
+    grid-template-columns: 55% 42%;
+    gap: 48px;
+    align-items: start;
+}
+
+/* Description text */
+.pura-description p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    line-height: 1.8;
+    color: #22344B;
+    margin: 0 0 28px 0;
+}
+
+.pura-desc-intro {
+    font-style: italic !important;
+    font-size: 24px !important;
+    line-height: 1.5 !important;
+    text-align: center;
+    margin-bottom: 36px !important;
+}
+
+.pura-desc-hidden {
+    display: none;
+}
+
+.pura-desc-hidden.open {
+    display: block;
+}
+
+.pura-read-more {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #C9A84C;
+    transition: opacity 0.2s;
+}
+
+.pura-read-more:hover {
+    opacity: 0.75;
+}
+
+/* Features sidebar (shown in Description tab) */
+.pura-features-sidebar {
+    background: #F5F5F0;
+    border-radius: 3px;
+    padding: 28px;
+}
+
+.pura-features-title {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.15em !important;
+    color: #22344B !important;
+    margin: 0 0 20px 0 !important;
+}
+
+.pura-features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 16px;
+}
+
+.pura-feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.pura-feature-check {
+    color: #C9A84C;
+    font-size: 13px;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.pura-feature-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: #22344B;
+    line-height: 1.4;
+}
+
+/* --- OVERVIEW TAB --- */
+.pura-overview-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(34, 52, 75, 0.08);
+    border: 1px solid rgba(34, 52, 75, 0.08);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+.pura-ov-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 20px 22px;
+    background: #fff;
+}
+
+.pura-ov-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: rgba(34, 52, 75, 0.45);
+    text-transform: uppercase;
+}
+
+.pura-ov-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    color: #22344B;
+    line-height: 1.2;
+}
+
+.pura-map-wrap {
+    border-radius: 3px;
+    overflow: hidden;
+    height: 400px;
+}
+
+.pura-map-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+/* --- FEATURES TAB (standalone) --- */
+.pura-features-full {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px 32px;
+}
+
+/* --- LIGHTBOX --- */
+.pura-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 28, 38, 0.95);
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+}
+
+.pura-lightbox.open {
+    display: flex;
+}
+
+.pura-lb-img-wrap {
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pura-lb-img-wrap img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 2px;
+}
+
+.pura-lb-close,
+.pura-lb-prev,
+.pura-lb-next {
+    position: fixed;
+    background: rgba(255, 255, 255, 0.12);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 28px;
+    line-height: 1;
+    transition: background 0.2s;
+    z-index: 100000;
+}
+
+.pura-lb-close:hover,
+.pura-lb-prev:hover,
+.pura-lb-next:hover {
+    background: rgba(255, 255, 255, 0.22);
+}
+
+.pura-lb-close {
+    top: 20px;
+    right: 24px;
+    padding: 8px 14px;
+    border-radius: 50%;
+    font-size: 24px;
+}
+
+.pura-lb-prev {
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 16px 20px;
+    border-radius: 3px;
+}
+
+.pura-lb-next {
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 16px 20px;
+    border-radius: 3px;
+}
+
+/* ==========================================================
+   RESPONSIVE — TABLET (768px – 1024px)
+   ========================================================== */
+@media (max-width: 1024px) {
+
+    .pura-gallery-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .pura-gallery-main {
+        height: 420px;
+        border-radius: 3px;
+    }
+
+    .pura-gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr;
+        height: 140px;
+    }
+
+    .pura-info-bar {
+        flex-direction: column;
+        gap: 28px;
+    }
+
+    .pura-info-right {
+        text-align: left;
+        width: 100%;
+    }
+
+    .pura-price {
+        font-size: 34px;
+    }
+
+    .pura-specs {
+        justify-content: flex-start;
+    }
+
+    .pura-spec:first-child {
+        padding-left: 0;
+        border-left: none;
+    }
+
+    .pura-two-col {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .pura-overview-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .pura-features-full {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ==========================================================
+   RESPONSIVE — MOBILE (< 768px)
+   ========================================================== */
+@media (max-width: 767px) {
+
+    .pura-gallery-main {
+        height: 260px;
+    }
+
+    .pura-gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        height: 120px;
+    }
+
+    /* Hide 5th grid item on mobile, show SEE ALL on 4th */
+    .pura-grid-item:nth-child(5) {
+        display: none;
+    }
+
+    .pura-grid-item:nth-child(4) .pura-see-all {
+        display: flex;
+    }
+
+    .pura-title {
+        font-size: 30px !important;
+    }
+
+    .pura-price {
+        font-size: 28px;
+    }
+
+    .pura-cta-btn {
+        display: block;
+        text-align: center;
+        padding: 16px 24px;
+    }
+
+    .pura-spec-value {
+        font-size: 26px;
+    }
+
+    .pura-tabs-nav {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .pura-tabs-nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .pura-tab {
+        padding: 14px 16px;
+        font-size: 10px;
+    }
+
+    .pura-features-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .pura-overview-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pura-features-full {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .pura-map-wrap {
+        height: 280px;
+    }
+
+    .pura-lb-prev,
+    .pura-lb-next {
+        font-size: 22px;
+        padding: 12px 14px;
+    }
+}
+
+/* ==========================================================
+   NAVIGATION — keep dark text on light header
+   ========================================================== */
+header[data-elementor-type="header"] .elementor-item,
+header[data-elementor-type="header"] .elementor-item:visited,
+header[data-elementor-type="header"] .elementor-item:hover,
+header[data-elementor-type="header"] a {
+    color: #22344B !important;
+}
