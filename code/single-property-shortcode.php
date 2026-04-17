@@ -36,10 +36,13 @@ function pura_single_property_shortcode() {
     $lng            = get_field('longitude', $post_id);
 
     // --- Price formatting: 315000 → € 315.000 ---
+    // Strip ALL non-digit chars (including dots/commas from European-format stored values)
     $price_formatted = '';
     if ($price) {
-        $clean_price = preg_replace('/[^0-9.]/', '', $price);
-        $price_formatted = '€ ' . number_format((float)$clean_price, 0, ',', '.');
+        $clean_price = preg_replace('/[^0-9]/', '', (string)$price);
+        if ($clean_price !== '') {
+            $price_formatted = '€ ' . number_format((int)$clean_price, 0, ',', '.');
+        }
     }
 
     // --- Gallery images ---
@@ -113,7 +116,7 @@ function pura_single_property_shortcode() {
         <!-- ==================== GALLERY HERO ==================== -->
         <div class="pura-gallery-hero">
 
-            <div class="pura-gallery-main">
+            <div class="pura-gallery-main" onclick="puraOpenLightbox(0)">
                 <?php if ($main_img_url): ?>
                     <img src="<?php echo esc_url($main_img_url); ?>"
                          alt="<?php echo esc_attr(get_the_title()); ?>">
@@ -456,3 +459,11 @@ function pura_single_property_shortcode() {
     return ob_get_clean();
 }
 add_shortcode('pura_property', 'pura_single_property_shortcode');
+
+// Add body class on property pages so nav CSS targeting is reliable
+add_filter('body_class', function($classes) {
+    if (is_singular('property_item') || is_post_type_archive('property_item')) {
+        $classes[] = 'pura-property-page';
+    }
+    return $classes;
+});

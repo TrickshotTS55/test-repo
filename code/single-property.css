@@ -4,6 +4,14 @@
    (Replace all previous property-related CSS)
    ========================================================== */
 
+/* --- PROPERTY WRAPPER --- */
+.pura-property-wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+}
+
 /* --- GALLERY HERO --- */
 .pura-gallery-hero {
     display: grid;
@@ -661,15 +669,104 @@
 
 /* ==========================================================
    NAVIGATION — dark text ONLY on property single + archive
-   (Homepage and other pages keep their original white nav)
+   Uses both the custom pura-property-page class (added via PHP body_class filter)
+   and the WP-generated body classes as fallback
    ========================================================== */
-.single-property header[data-elementor-type="header"] .elementor-item,
-.single-property header[data-elementor-type="header"] .elementor-item:visited,
-.single-property header[data-elementor-type="header"] .elementor-item:hover,
-.single-property header[data-elementor-type="header"] a,
-.post-type-archive-property header[data-elementor-type="header"] .elementor-item,
-.post-type-archive-property header[data-elementor-type="header"] .elementor-item:visited,
-.post-type-archive-property header[data-elementor-type="header"] .elementor-item:hover,
-.post-type-archive-property header[data-elementor-type="header"] a {
+.pura-property-page header[data-elementor-type="header"] .elementor-item,
+.pura-property-page header[data-elementor-type="header"] .elementor-item:visited,
+.pura-property-page header[data-elementor-type="header"] .elementor-item:hover,
+.pura-property-page header[data-elementor-type="header"] a,
+.single-property_item header[data-elementor-type="header"] .elementor-item,
+.single-property_item header[data-elementor-type="header"] .elementor-item:visited,
+.single-property_item header[data-elementor-type="header"] .elementor-item:hover,
+.single-property_item header[data-elementor-type="header"] a,
+.post-type-archive-property_item header[data-elementor-type="header"] .elementor-item,
+.post-type-archive-property_item header[data-elementor-type="header"] .elementor-item:visited,
+.post-type-archive-property_item header[data-elementor-type="header"] .elementor-item:hover,
+.post-type-archive-property_item header[data-elementor-type="header"] a {
     color: #22344B !important;
+}
+
+/* ==========================================================
+   ELEMENTOR BUTTON OVERRIDES
+   Elementor Pro injects default button styles that override
+   our custom button styling — neutralise them here
+   ========================================================== */
+
+/* READ MORE button — kill Elementor pink/default button styles */
+.pura-read-more,
+.elementor-widget-html .pura-read-more,
+.elementor .pura-read-more {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
+    -webkit-appearance: none !important;
+    text-decoration: none !important;
+    color: rgba(34, 52, 75, 0.55) !important;
+    padding: 8px 0 !important;
+    margin: 0 !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.2em !important;
+    text-transform: uppercase !important;
+    width: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    transition: color 0.25s ease !important;
+    cursor: pointer !important;
+}
+
+.pura-read-more:hover,
+.elementor-widget-html .pura-read-more:hover,
+.elementor .pura-read-more:hover {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    color: #C9A84C !important;
+}
+
+/* Tab buttons — same issue */
+.pura-tab,
+.elementor-widget-html .pura-tab,
+.elementor .pura-tab {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
+    -webkit-appearance: none !important;
+}
+
+.pura-tab.active,
+.pura-tab:hover,
+.elementor-widget-html .pura-tab.active,
+.elementor-widget-html .pura-tab:hover {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #C9A84C !important;
+    border-bottom-color: #C9A84C !important;
+    box-shadow: none !important;
+}
+
+/* Lightbox nav/close buttons */
+.pura-lb-close,
+.pura-lb-prev,
+.pura-lb-next,
+.elementor-widget-html .pura-lb-close,
+.elementor-widget-html .pura-lb-prev,
+.elementor-widget-html .pura-lb-next {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 4px !important;
+    color: #fff !important;
+    box-shadow: none !important;
+    outline: none !important;
+    -webkit-appearance: none !important;
 }
