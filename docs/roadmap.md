@@ -7,7 +7,7 @@ Work through these phases in order. Each phase is a prerequisite for the next.
 ---
 
 ## Phase 1 — Foundation (ACF + XML Import)
-**Status: ALMOST DONE — 1 fix needed**
+**Status: COMPLETE**
 
 Goal: Get all property data from the XML feed correctly stored in WordPress.
 
@@ -16,8 +16,7 @@ Goal: Get all property data from the XML feed correctly stored in WordPress.
 - [x] Added missing ACF fields: `property_type`, `province`, `urbanisation`, `pool`, `latitude`, `longitude`, `description_de`
 - [x] Updated WP All Import mapping for all new fields
 - [x] Re-ran import — all key fields populated correctly
-- [ ] **Fix: Change `ref` field type from Number → Text** (XML value is "IS-89171", not a number)
-- [ ] Re-run import after ref fix, verify ref populated
+- [x] Fixed `ref` field type: Number → Text, re-imported, IS-89171 now correct
 - [x] `distance_to_beach` / `distance_to_airport` — intentionally left empty, info comes from `features` field instead
 - [ ] Set up live XML feed URL for automatic sync (later)
 - [ ] Set up live XML feed URL (replace manual upload)
@@ -25,7 +24,7 @@ Goal: Get all property data from the XML feed correctly stored in WordPress.
 ---
 
 ## Phase 2 — Single Property Template
-**Status: STARTED (rough structure in Elementor)**
+**Status: IN PROGRESS**
 
 Goal: A premium, fully responsive single property page.
 
