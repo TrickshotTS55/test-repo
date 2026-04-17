@@ -62,15 +62,39 @@ function pura_single_property_shortcode() {
         $grid_images  = array_slice($all_media, 1, 5);
     }
 
-    // --- Description: clean up &#13; and split into paragraphs ---
+    // --- Description: handle &#13; entities from XML import ---
     $desc_paragraphs = [];
     if ($description) {
-        $clean = html_entity_decode($description, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        $clean = $description;
+        // WP All Import stores carriage returns as literal &#13; entities
+        $clean = str_replace(['&#13;', '&#x0D;', '&#x0d;'], "\n", $clean);
+        $clean = html_entity_decode($clean, ENT_QUOTES, 'UTF-8');
         $clean = preg_replace('/\r\n|\r/', "\n", $clean);
         $clean = preg_replace('/\n{3,}/', "\n\n", trim($clean));
-        $desc_paragraphs = array_values(array_filter(
+
+        $paras = array_values(array_filter(
             array_map('trim', preg_split('/\n\s*\n/', $clean))
         ));
+
+        // Fallback: if only 1 paragraph, split every 3 sentences
+        if (count($paras) <= 1 && !empty($paras)) {
+            $sentences = preg_split('/(?<=[.!?])\s+(?=[A-ZÜÖÄ\"\'])/', $paras[0]);
+            $paras  = [];
+            $buffer = '';
+            $count  = 0;
+            foreach ($sentences as $s) {
+                $buffer .= ($buffer ? ' ' : '') . $s;
+                $count++;
+                if ($count >= 3) {
+                    $paras[] = $buffer;
+                    $buffer  = '';
+                    $count   = 0;
+                }
+            }
+            if ($buffer) $paras[] = $buffer;
+        }
+
+        $desc_paragraphs = array_values(array_filter($paras));
     }
 
     // --- Features array ---
@@ -169,22 +193,30 @@ function pura_single_property_shortcode() {
 
                     <div class="pura-description-col">
                         <?php if (!empty($desc_paragraphs)): ?>
-                        <div class="pura-description">
-                            <?php foreach (array_slice($desc_paragraphs, 0, 3) as $i => $para): ?>
-                                <p class="<?php echo $i === 0 ? 'pura-desc-intro' : ''; ?>">
-                                    <?php echo esc_html($para); ?>
-                                </p>
-                            <?php endforeach; ?>
-                            <?php if (count($desc_paragraphs) > 3): ?>
-                                <div class="pura-desc-hidden" id="pura-desc-hidden">
-                                    <?php foreach (array_slice($desc_paragraphs, 3) as $para): ?>
-                                        <p><?php echo esc_html($para); ?></p>
-                                    <?php endforeach; ?>
+                        <div class="pura-description-wrap" id="pura-desc-wrap">
+                            <div class="pura-description">
+                                <?php foreach (array_slice($desc_paragraphs, 0, 2) as $i => $para): ?>
+                                    <p class="<?php echo $i === 0 ? 'pura-desc-intro' : ''; ?>">
+                                        <?php echo esc_html($para); ?>
+                                    </p>
+                                <?php endforeach; ?>
+                            </div>
+                            <?php if (count($desc_paragraphs) > 2): ?>
+                                <div class="pura-desc-reveal" id="pura-desc-reveal">
+                                    <div class="pura-desc-reveal-inner">
+                                        <?php foreach (array_slice($desc_paragraphs, 2) as $para): ?>
+                                            <p><?php echo esc_html($para); ?></p>
+                                        <?php endforeach; ?>
+                                    </div>
                                 </div>
-                                <button class="pura-read-more" onclick="puraToggleDesc()">
-                                    <span class="pura-rm-text">READ MORE</span>
-                                    <span class="pura-rm-arrow">→</span>
-                                </button>
+                                <div class="pura-desc-fade" id="pura-desc-fade"></div>
+                                <div class="pura-read-more-wrap">
+                                    <button class="pura-read-more" id="pura-read-more-btn" onclick="puraToggleDesc()">
+                                        <span class="pura-rm-line"></span>
+                                        <span class="pura-rm-text">READ MORE</span>
+                                        <span class="pura-rm-line"></span>
+                                    </button>
+                                </div>
                             <?php endif; ?>
                         </div>
                         <?php endif; ?>
@@ -328,15 +360,42 @@ function pura_single_property_shortcode() {
             });
         });
 
-        // --- Read more ---
+        // --- Read more: elegant gradient-reveal ---
         window.puraToggleDesc = function() {
-            var hidden = document.getElementById('pura-desc-hidden');
-            var btn    = document.querySelector('.pura-read-more');
-            if (!hidden || !btn) return;
-            hidden.classList.toggle('open');
-            var isOpen = hidden.classList.contains('open');
-            btn.querySelector('.pura-rm-text').textContent = isOpen ? 'READ LESS' : 'READ MORE';
-            btn.querySelector('.pura-rm-arrow').textContent = isOpen ? '↑' : '→';
+            var reveal = document.getElementById('pura-desc-reveal');
+            var fade   = document.getElementById('pura-desc-fade');
+            var btn    = document.getElementById('pura-read-more-btn');
+            var wrap   = document.getElementById('pura-desc-wrap');
+            if (!reveal) return;
+
+            var isOpen = reveal.classList.contains('open');
+
+            if (!isOpen) {
+                // Reveal: first fade out the gradient, then expand
+                if (fade) fade.classList.add('hiding');
+                setTimeout(function() {
+                    reveal.classList.add('open');
+                    if (btn) btn.classList.add('open');
+                    if (wrap) wrap.classList.add('expanded');
+                    setTimeout(function() {
+                        if (fade) fade.style.display = 'none';
+                        if (btn) {
+                            btn.querySelector('.pura-rm-text').textContent = 'READ LESS';
+                        }
+                    }, 200);
+                }, 200);
+            } else {
+                // Collapse
+                reveal.classList.remove('open');
+                if (btn) btn.classList.remove('open');
+                if (wrap) wrap.classList.remove('expanded');
+                if (fade) {
+                    fade.style.display = '';
+                    setTimeout(function() { fade.classList.remove('hiding'); }, 20);
+                }
+                if (btn) btn.querySelector('.pura-rm-text').textContent = 'READ MORE';
+                window.scrollTo({ top: reveal.getBoundingClientRect().top + window.scrollY - 200, behavior: 'smooth' });
+            }
         };
 
         // --- Lightbox ---
