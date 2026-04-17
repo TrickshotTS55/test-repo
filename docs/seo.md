@@ -1,17 +1,22 @@
 # SEO Strategy – Pura Vida Real Estate
 
 ## Tool
-Rank Math SEO (installed)
+Rank Math SEO (installed and active)
+
+## Core Principle
+Every page, property, and piece of content must be optimized for organic search. Prioritize long-tail, location-specific keywords. Target international buyers in their language and mindset.
 
 ---
 
 ## Target Markets & Languages
-| Market         | Language | Search Behavior                              |
-|----------------|----------|----------------------------------------------|
-| Germany/Austria/CH | German | "Immobilien Spanien kaufen", "Villa Costa Blanca" |
-| UK             | English  | "property for sale Costa Blanca", "buy house Spain" |
-| Netherlands    | Dutch/EN | similar to UK patterns                       |
-| Scandinavia    | English  | "property Spain", "Costa Blanca house"       |
+
+| Market              | Language   | Primary Search Behavior                              |
+|---------------------|------------|------------------------------------------------------|
+| Germany/Austria/CH  | German     | "Immobilien Costa Blanca kaufen", "Villa Spanien"    |
+| UK                  | English    | "property for sale Costa Blanca South"               |
+| Netherlands         | Dutch/EN   | "huis kopen Spanje", "appartement Costa Blanca"      |
+| Scandinavia         | English    | "buy property Spain", "holiday home Costa Blanca"    |
+| Belgium             | FR/NL/EN   | mixed search patterns                                |
 
 ---
 
@@ -20,59 +25,148 @@ Rank Math SEO (installed)
 ### Brand / General
 - "Pura Vida Real Estate"
 - "real estate Costa Blanca South"
-- "property for sale Costa Cálida"
+- "property for sale Costa Cálida Spain"
+- "buy property Costa Blanca South"
 
-### Property Types
-- "villa for sale Costa Blanca"
-- "apartment for sale Torrevieja"
-- "new build property Spain"
-- "holiday home Costa Blanca"
+### Property Types (English)
+- "villa for sale Costa Blanca South"
+- "apartment for sale Costa Blanca South"
+- "townhouse for sale Orihuela Costa"
+- "new build villa Spain"
+- "holiday home for sale Costa Blanca"
+- "retirement property Spain Costa Blanca"
+- "investment property Costa Blanca"
 
-### Buyer Intent
-- "buy property in Spain as foreigner"
-- "how to buy a house in Spain"
-- "Costa Blanca property buying guide"
+### German Keywords (Priority Market)
+- "Immobilien Costa Blanca Süd kaufen"
+- "Villa Costa Blanca kaufen"
+- "Wohnung Spanien kaufen Costa Blanca"
+- "Ferienhaus Costa Blanca kaufen"
+- "Immobilien Costa Cálida"
+- "Haus kaufen Spanien Ausländer"
+- "Altersruhesitz Spanien Costa Blanca"
 
-### German Market
-- "Immobilien Costa Blanca kaufen"
-- "Villa Spanien kaufen"
-- "Ferienhaus Spanien Costa Blanca"
+### Buyer Intent / Process
+- "how to buy property in Spain as a foreigner"
+- "buying process property Spain step by step"
+- "costs of buying property in Spain"
+- "NIE number Spain property purchase"
+- "lawyer Spain property purchase"
 
 ---
 
-## Page-Level SEO Structure
+## Location-Specific Keywords
+
+### Costa Blanca South (Alicante Province)
+
+**Major Towns**
+- Torrevieja property for sale
+- Orihuela Costa property for sale
+- Pilar de la Horadada property for sale
+- Ciudad Quesada property for sale
+- Rojales property for sale
+- Guardamar del Segura property for sale
+- San Miguel de Salinas property for sale
+- Santa Pola property for sale
+
+**Urbanisations & Areas**
+- La Zenia property for sale
+- Villamartín property for sale
+- Cabo Roig property for sale
+- Playa Flamenca property for sale
+- Campoamor property for sale
+- Dehesa de Campoamor property for sale
+- Punta Prima property for sale
+- Los Altos property for sale
+- Mil Palmeras property for sale
+- Torre de la Horadada property for sale
+- Los Dolses property for sale
+- Montezenia property for sale
+- Las Ramblas Golf property for sale
+- El Galán property for sale
+- La Ciñuelica property for sale
+- Aguamarina property for sale
+- Los Balcones property for sale
+
+### Costa Cálida (Murcia Province)
+
+**Major Towns & Areas**
+- Los Alcázares property for sale
+- San Pedro del Pinatar property for sale
+- San Javier property for sale
+- Santiago de la Ribera property for sale
+- La Manga del Mar Menor property for sale
+- Torre-Pacheco property for sale
+- Mazarrón property for sale
+- Puerto de Mazarrón property for sale
+- Cartagena property for sale
+- Cabo de Palos property for sale
+- Mar de Cristal property for sale
+- Islas Menores property for sale
+
+---
+
+## Page-Level SEO
 
 ### Single Property Page
-- Title tag: `[Property Type] in [Location] – [Price] | Pura Vida Real Estate`
-- Example: `Villa in Capdepera – € 875.000 | Pura Vida Real Estate`
-- Meta description: Lead with lifestyle, include key specs and CTA
-- H1: Property title (from ACF field, auto-generated)
-- Schema: RealEstateListing or Product schema markup
-- Images: ALT tags with location + property type (auto-generate from ACF data)
+- **Title tag:** `[Type] in [Town] – € [Price] | Pura Vida Real Estate`
+- Example: `Villa in Villamartín – € 875.000 | Pura Vida Real Estate`
+- **Meta description:** Lead with lifestyle, include key specs and CTA. 155 chars max.
+- Example: `Bright 3-bedroom villa with private pool in Villamartín. 200 m², terrace, parking. Arrange a viewing with Pura Vida Real Estate – your guide in Costa Blanca South.`
+- **H1:** `[Type] in [Town] – [Province]` (auto-generated from ACF fields)
+- **Schema markup:** `RealEstateListing` — include price, beds, baths, location, image
+- **Image ALT tags:** `[Property type] [Town] [Province] – Pura Vida Real Estate`
+
+### Properties Archive Page
+- **Title:** `Properties for Sale in Costa Blanca South | Pura Vida Real Estate`
+- **H1:** `Find Your Property in Costa Blanca South`
+- Include intro text with natural keyword use
 
 ### Area Guide Pages
-- Target long-tail: "living in [area name] Spain"
-- H1: "Living in [Area]: Everything You Need to Know"
-- Include: map, beach distances, amenities, lifestyle
+- **Title pattern:** `Living in [Area], Spain – Area Guide | Pura Vida Real Estate`
+- **H1:** `Living in [Area]: Everything You Need to Know`
+- Include: beaches, amenities, property types, distances, lifestyle
+- Target: "living in [area] Spain", "[area] Spain expat guide"
 
 ### Homepage
-- Title: `Luxury Property for Sale in Costa Blanca South | Pura Vida Real Estate`
-- Meta: Focus on trust, personal service, international buyers
+- **Title:** `Property for Sale in Costa Blanca South & Costa Cálida | Pura Vida Real Estate`
+- **Meta:** `Find your dream property in Spain with Davy & Marina. Personal guidance for international buyers. Villas, apartments & new builds in Costa Blanca South.`
 
 ---
 
 ## Technical SEO
-- Sitemap: Auto-generated by Rank Math
-- Robots.txt: Ensure property archive and single pages are indexed
-- Page speed: WP Fastest Cache active — test after major changes
-- Mobile: All pages must pass Google Mobile-Friendly test
-- Canonical tags: Set by Rank Math to avoid duplicate content from XML import
+- Sitemap: auto-generated by Rank Math — ensure property CPT is included
+- Robots.txt: property archive and single pages must be indexable
+- Canonical tags: set by Rank Math to prevent duplicate content from XML re-imports
+- Page speed: WP Fastest Cache active — test Core Web Vitals after major changes
+- Mobile-first: all templates must pass Google Mobile-Friendly test
+- Structured data: generate per property via PHP in single property template
 
 ---
 
-## Property Schema (Future)
-When XML feed is live, auto-generate structured data per property:
-- `@type: RealEstateListing`
-- `name`, `description`, `price`, `numberOfRooms`, `floorSize`
-- `address` with `addressLocality`, `addressCountry: ES`
-- `image` array from gallery
+## Video SEO (Priority)
+Since video is a core content strategy:
+- Upload property videos to YouTube first, embed on site (better for SEO than self-hosted)
+- YouTube titles: `[Property Type] for Sale in [Location], Spain – Pura Vida Real Estate`
+- YouTube description: include location keywords, price range, contact info
+- Add `VideoObject` schema markup on pages with embedded videos
+- Area guide videos: "Living in [Area] Spain – Honest Review 2025"
+
+---
+
+## Content SEO (Blog / Guides)
+Priority topics to write:
+1. "How to Buy Property in Spain as a Foreigner – Step by Step"
+2. "Costa Blanca South vs Costa Cálida – Which Is Right for You?"
+3. "The Best Areas to Buy Property in Costa Blanca South"
+4. "Costs of Buying Property in Spain: What Nobody Tells You"
+5. "New Build vs Resale Property in Spain – Pros and Cons"
+6. "Living in [each area] – Honest Guide for International Buyers"
+
+---
+
+## Rank Math Setup Notes
+- Focus keyword: set per property from title/location data
+- Auto-generate meta descriptions using ACF field values
+- Enable breadcrumbs for property pages
+- Set Open Graph images to property hero photo
