@@ -10,20 +10,27 @@ Premium real estate website for Davy & Marina Siger. Focus: international buyers
 ---
 
 ## Current Priority
-Improving the **Single Property Template** and **Archive/Properties Template** in Elementor. Data comes from an XML feed (InSun Properties) imported via WP All Import Pro into ACF fields.
+Building the website step by step. Current phase: **expanding ACF fields**, then re-importing XML feed, then building Single Property Template and Archive Template in Elementor. See `docs/roadmap.md` for full plan.
 
 ---
 
-## Tech Stack
-- WordPress
-- Elementor Pro (page builder — all layouts built here)
-- Hello Elementor (minimal base theme)
-- Advanced Custom Fields (ACF) — stores all property data
-- WP All Import Pro — imports XML feed into ACF fields
-- Rank Math SEO
-- WP Fastest Cache
+## Tech Stack & Plugins (all active)
+- WordPress + Hello Elementor theme
+- Elementor 3.35.6 + Elementor Pro 3.35.1 (page builder)
+- Jeg Kit for Elementor (extra widgets)
+- Advanced Custom Fields 6.7.1 (property data storage)
+- Custom Post Type UI (registers `property` post type)
+- WP All Import Pro 5.0.4 + ACF Add-On Pro (XML import)
+- Code Snippets 3.9.5 (PHP snippets — used instead of functions.php)
+- TranslatePress Multilingual 3.1 (not yet configured — multilingual EN/DE/RU)
+- Rank Math SEO 1.0.265
+- WP Fastest Cache + WP-Optimize (performance)
 - UpdraftPlus (backups)
-- WPCode / Snippets (for PHP in Elementor)
+- Chaty (WhatsApp/chat widget)
+- MetForm (contact forms)
+- Site Kit by Google (Analytics/Search Console)
+- CookieYes (GDPR)
+- Wordfence Security (currently deactivated)
 
 ---
 
