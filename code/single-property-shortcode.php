@@ -51,18 +51,24 @@ function pura_single_property_shortcode() {
     $all_media     = get_attached_media('image', $post_id);
     $all_media     = array_values($all_media);
 
-    // Grid images: all attachments except the featured image, up to 5
-    $grid_images = [];
+    // All non-featured images (3 shown in grid, rest available in lightbox)
+    $all_non_featured = [];
     foreach ($all_media as $att) {
         if ($att->ID !== (int) $featured_id) {
-            $grid_images[] = $att;
+            $all_non_featured[] = $att;
         }
-        if (count($grid_images) >= 5) break;
     }
+    $grid_images   = array_slice($all_non_featured, 0, 3);
+    $see_all_thumb = isset($all_non_featured[3]) ? $all_non_featured[3]
+                   : (!empty($grid_images) ? $grid_images[count($grid_images) - 1] : null);
+
     // Fallback: if no featured image, use first attachment as main
     if (!$main_img_url && !empty($all_media)) {
-        $main_img_url = wp_get_attachment_image_url($all_media[0]->ID, 'full');
-        $grid_images  = array_slice($all_media, 1, 5);
+        $main_img_url     = wp_get_attachment_image_url($all_media[0]->ID, 'full');
+        $all_non_featured = array_slice($all_media, 1);
+        $grid_images      = array_slice($all_non_featured, 0, 3);
+        $see_all_thumb    = isset($all_non_featured[3]) ? $all_non_featured[3]
+                          : (!empty($grid_images) ? $grid_images[count($grid_images) - 1] : null);
     }
 
     // --- Description: handle &#13; entities from XML import ---
@@ -127,18 +133,35 @@ function pura_single_property_shortcode() {
                 <?php foreach ($grid_images as $i => $img):
                     $img_url  = wp_get_attachment_image_url($img->ID, 'large');
                     $img_full = wp_get_attachment_image_url($img->ID, 'full');
-                    $is_last  = ($i === count($grid_images) - 1) && count($grid_images) >= 5;
                 ?>
-                    <div class="pura-grid-item <?php echo $is_last ? 'pura-grid-last' : ''; ?>"
-                         data-full="<?php echo esc_url($img_full); ?>">
+                    <div class="pura-grid-item" data-full="<?php echo esc_url($img_full); ?>"
+                         data-lb-index="<?php echo $i + 1; ?>">
                         <img src="<?php echo esc_url($img_url); ?>" alt="">
-                        <?php if ($is_last): ?>
-                            <div class="pura-see-all" onclick="puraOpenGallery()">SEE ALL PHOTOS</div>
-                        <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
+                <!-- 4th cell: always SEE ALL PHOTOS -->
+                <div class="pura-grid-item pura-grid-last" onclick="puraOpenGallery()">
+                    <?php if ($see_all_thumb): ?>
+                        <img src="<?php echo esc_url(wp_get_attachment_image_url($see_all_thumb->ID, 'large')); ?>" alt="">
+                    <?php endif; ?>
+                    <div class="pura-see-all">SEE ALL PHOTOS</div>
+                </div>
             </div>
 
+        </div>
+
+        <!-- Hidden image list: all images for lightbox (including those not shown in grid) -->
+        <?php
+        $lb_urls = $main_img_url ? [$main_img_url] : [];
+        foreach ($all_non_featured as $att) {
+            $u = wp_get_attachment_image_url($att->ID, 'full');
+            if ($u) $lb_urls[] = $u;
+        }
+        ?>
+        <div id="pura-all-images" style="display:none">
+            <?php foreach ($lb_urls as $lb_url): ?>
+                <span data-url="<?php echo esc_url($lb_url); ?>"></span>
+            <?php endforeach; ?>
         </div>
 
         <!-- ==================== INFO BAR ==================== -->
@@ -160,18 +183,21 @@ function pura_single_property_shortcode() {
                 <div class="pura-specs">
                     <?php if ($bedrooms): ?>
                     <div class="pura-spec">
-                        <span class="pura-spec-label">Bedrooms</span>
+                        <span class="pura-spec-icon"><svg width="20" height="13" viewBox="0 0 20 13" fill="none"><rect x="1" y="1" width="18" height="7" rx="1" stroke="#22344B" stroke-opacity="0.4" stroke-width="1.3"/><rect x="2.5" y="2.5" width="5" height="4" rx="0.5" stroke="#22344B" stroke-opacity="0.4" stroke-width="1.1"/><rect x="12.5" y="2.5" width="5" height="4" rx="0.5" stroke="#22344B" stroke-opacity="0.4" stroke-width="1.1"/><path d="M1 8v4M19 8v4" stroke="#22344B" stroke-opacity="0.4" stroke-width="1.3" stroke-linecap="round"/></svg></span>
+                        <span class="pura-spec-label">BEDS</span>
                         <span class="pura-spec-value"><?php echo esc_html($bedrooms); ?></span>
                     </div>
                     <?php endif; ?>
                     <?php if ($bathrooms): ?>
                     <div class="pura-spec">
-                        <span class="pura-spec-label">Bathrooms</span>
+                        <span class="pura-spec-icon"><svg width="18" height="15" viewBox="0 0 18 15" fill="none"><path d="M3 1v6" stroke="#22344B" stroke-opacity="0.4" stroke-width="1.3" stroke-linecap="round"/><circle cx="3" cy="3" r="1.5" stroke="#22344B" stroke-opacity="0.4" stroke-width="1.1"/><rect x="1" y="7" width="16" height="3" rx="1" stroke="#22344B" stroke-opacity="0.4" stroke-width="1.3" fill="none"/><path d="M4 10v3M14 10v3" stroke="#22344B" stroke-opacity="0.4" stroke-width="1.3" stroke-linecap="round"/></svg></span>
+                        <span class="pura-spec-label">BATHS</span>
                         <span class="pura-spec-value"><?php echo esc_html($bathrooms); ?></span>
                     </div>
                     <?php endif; ?>
                     <?php if ($size): ?>
                     <div class="pura-spec">
+                        <span class="pura-spec-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 5V1h4M11 1h4v4M15 11v4h-4M5 15H1v-4" stroke="#22344B" stroke-opacity="0.4" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                         <span class="pura-spec-label">m²</span>
                         <span class="pura-spec-value"><?php echo esc_html($size); ?></span>
                     </div>
@@ -188,6 +214,7 @@ function pura_single_property_shortcode() {
                 <button class="pura-tab active" data-tab="description" role="tab">DESCRIPTION</button>
                 <button class="pura-tab" data-tab="overview" role="tab">OVERVIEW</button>
                 <button class="pura-tab" data-tab="features" role="tab">FEATURES &amp; AMENITIES</button>
+                <button class="pura-tab" data-tab="downloads" role="tab">DOWNLOADS</button>
             </div>
 
             <!-- DESCRIPTION -->
@@ -197,6 +224,7 @@ function pura_single_property_shortcode() {
                     <div class="pura-description-col">
                         <?php if (!empty($desc_paragraphs)): ?>
                         <div class="pura-description-wrap" id="pura-desc-wrap">
+                            <h3 class="pura-col-heading">DESCRIPTION</h3>
                             <div class="pura-description">
                                 <?php foreach (array_slice($desc_paragraphs, 0, 2) as $i => $para): ?>
                                     <p class="<?php echo $i === 0 ? 'pura-desc-intro' : ''; ?>">
@@ -329,6 +357,14 @@ function pura_single_property_shortcode() {
                 <?php endif; ?>
             </div>
 
+            <!-- DOWNLOADS TAB -->
+            <div class="pura-tab-content" id="pura-tab-downloads">
+                <div class="pura-downloads-wrap">
+                    <p class="pura-downloads-text">Property documents and floor plans are available on request.</p>
+                    <a href="/contact" class="pura-cta-btn">REQUEST DOCUMENTS</a>
+                </div>
+            </div>
+
         </div>
         <!-- end tabs -->
 
@@ -405,22 +441,23 @@ function pura_single_property_shortcode() {
         var lbImages = [];
         var lbIndex  = 0;
 
-        // Collect all gallery images for lightbox
-        document.querySelectorAll('.pura-gallery-main img, .pura-grid-item img').forEach(function(img) {
-            lbImages.push(img.src);
-        });
-
-        // Click main image to open lightbox
-        var mainImg = document.querySelector('.pura-gallery-main img');
-        if (mainImg) {
-            mainImg.style.cursor = 'pointer';
-            mainImg.addEventListener('click', function() { puraOpenLightbox(0); });
+        // Use hidden data list (includes all attached images, not just the displayed ones)
+        var allImgList = document.getElementById('pura-all-images');
+        if (allImgList) {
+            allImgList.querySelectorAll('[data-url]').forEach(function(el) {
+                if (el.dataset.url) lbImages.push(el.dataset.url);
+            });
+        }
+        if (!lbImages.length) {
+            document.querySelectorAll('.pura-gallery-main img, .pura-grid-item:not(.pura-grid-last) img').forEach(function(img) {
+                if (img.src) lbImages.push(img.src);
+            });
         }
 
-        // Click grid images (not the last "SEE ALL PHOTOS" one — that opens all)
-        document.querySelectorAll('.pura-grid-item:not(.pura-grid-last) img').forEach(function(img, i) {
-            img.style.cursor = 'pointer';
-            img.addEventListener('click', function() { puraOpenLightbox(i + 1); });
+        // Click grid items using data-lb-index (main image uses onclick attr directly)
+        document.querySelectorAll('.pura-grid-item:not(.pura-grid-last)').forEach(function(item) {
+            var idx = parseInt(item.dataset.lbIndex || 1);
+            item.addEventListener('click', function() { puraOpenLightbox(idx); });
         });
 
         window.puraOpenGallery = function() { puraOpenLightbox(0); };
