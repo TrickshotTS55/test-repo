@@ -214,6 +214,11 @@
     line-height: 1;
 }
 
+.pura-spec-icon svg {
+    width: 72px !important;
+    height: auto !important;
+}
+
 /* --- TABS --- */
 .pura-tabs-wrap {
     margin-top: 0;
