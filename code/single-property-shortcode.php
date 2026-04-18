@@ -51,24 +51,24 @@ function pura_single_property_shortcode() {
     $all_media     = get_attached_media('image', $post_id);
     $all_media     = array_values($all_media);
 
-    // All non-featured images (3 shown in grid, rest available in lightbox)
+    // All non-featured images (1 shown in grid, rest available in lightbox)
     $all_non_featured = [];
     foreach ($all_media as $att) {
         if ($att->ID !== (int) $featured_id) {
             $all_non_featured[] = $att;
         }
     }
-    $grid_images   = array_slice($all_non_featured, 0, 3);
-    $see_all_thumb = isset($all_non_featured[3]) ? $all_non_featured[3]
-                   : (!empty($grid_images) ? $grid_images[count($grid_images) - 1] : null);
+    $grid_images   = array_slice($all_non_featured, 0, 1);
+    $see_all_thumb = isset($all_non_featured[1]) ? $all_non_featured[1]
+                   : (!empty($grid_images) ? $grid_images[0] : null);
 
     // Fallback: if no featured image, use first attachment as main
     if (!$main_img_url && !empty($all_media)) {
         $main_img_url     = wp_get_attachment_image_url($all_media[0]->ID, 'full');
         $all_non_featured = array_slice($all_media, 1);
-        $grid_images      = array_slice($all_non_featured, 0, 3);
-        $see_all_thumb    = isset($all_non_featured[3]) ? $all_non_featured[3]
-                          : (!empty($grid_images) ? $grid_images[count($grid_images) - 1] : null);
+        $grid_images      = array_slice($all_non_featured, 0, 1);
+        $see_all_thumb    = isset($all_non_featured[1]) ? $all_non_featured[1]
+                          : (!empty($grid_images) ? $grid_images[0] : null);
     }
 
     // --- Description: handle &#13; entities from XML import ---
@@ -183,21 +183,21 @@ function pura_single_property_shortcode() {
                 <div class="pura-specs">
                     <?php if ($bedrooms): ?>
                     <div class="pura-spec">
-                        <span class="pura-spec-icon"><svg width="20" height="13" viewBox="0 0 20 13" fill="none"><rect x="1" y="1" width="18" height="7" rx="1" stroke="#22344B" stroke-opacity="0.4" stroke-width="1.3"/><rect x="2.5" y="2.5" width="5" height="4" rx="0.5" stroke="#22344B" stroke-opacity="0.4" stroke-width="1.1"/><rect x="12.5" y="2.5" width="5" height="4" rx="0.5" stroke="#22344B" stroke-opacity="0.4" stroke-width="1.1"/><path d="M1 8v4M19 8v4" stroke="#22344B" stroke-opacity="0.4" stroke-width="1.3" stroke-linecap="round"/></svg></span>
+                        <span class="pura-spec-icon"><svg width="20" height="13" viewBox="0 0 20 13" fill="none"><rect x="1" y="1" width="18" height="7" rx="1" stroke="#C9A84C" stroke-opacity="1" stroke-width="1.3"/><rect x="2.5" y="2.5" width="5" height="4" rx="0.5" stroke="#C9A84C" stroke-opacity="1" stroke-width="1.1"/><rect x="12.5" y="2.5" width="5" height="4" rx="0.5" stroke="#C9A84C" stroke-opacity="1" stroke-width="1.1"/><path d="M1 8v4M19 8v4" stroke="#C9A84C" stroke-opacity="1" stroke-width="1.3" stroke-linecap="round"/></svg></span>
                         <span class="pura-spec-label">BEDS</span>
                         <span class="pura-spec-value"><?php echo esc_html($bedrooms); ?></span>
                     </div>
                     <?php endif; ?>
                     <?php if ($bathrooms): ?>
                     <div class="pura-spec">
-                        <span class="pura-spec-icon"><svg width="18" height="15" viewBox="0 0 18 15" fill="none"><path d="M3 1v6" stroke="#22344B" stroke-opacity="0.4" stroke-width="1.3" stroke-linecap="round"/><circle cx="3" cy="3" r="1.5" stroke="#22344B" stroke-opacity="0.4" stroke-width="1.1"/><rect x="1" y="7" width="16" height="3" rx="1" stroke="#22344B" stroke-opacity="0.4" stroke-width="1.3" fill="none"/><path d="M4 10v3M14 10v3" stroke="#22344B" stroke-opacity="0.4" stroke-width="1.3" stroke-linecap="round"/></svg></span>
+                        <span class="pura-spec-icon"><svg width="18" height="15" viewBox="0 0 18 15" fill="none"><path d="M3 1v6" stroke="#C9A84C" stroke-opacity="1" stroke-width="1.3" stroke-linecap="round"/><circle cx="3" cy="3" r="1.5" stroke="#C9A84C" stroke-opacity="1" stroke-width="1.1"/><rect x="1" y="7" width="16" height="3" rx="1" stroke="#C9A84C" stroke-opacity="1" stroke-width="1.3" fill="none"/><path d="M4 10v3M14 10v3" stroke="#C9A84C" stroke-opacity="1" stroke-width="1.3" stroke-linecap="round"/></svg></span>
                         <span class="pura-spec-label">BATHS</span>
                         <span class="pura-spec-value"><?php echo esc_html($bathrooms); ?></span>
                     </div>
                     <?php endif; ?>
                     <?php if ($size): ?>
                     <div class="pura-spec">
-                        <span class="pura-spec-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 5V1h4M11 1h4v4M15 11v4h-4M5 15H1v-4" stroke="#22344B" stroke-opacity="0.4" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                        <span class="pura-spec-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 5V1h4M11 1h4v4M15 11v4h-4M5 15H1v-4" stroke="#C9A84C" stroke-opacity="1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                         <span class="pura-spec-label">m²</span>
                         <span class="pura-spec-value"><?php echo esc_html($size); ?></span>
                     </div>
@@ -207,166 +207,62 @@ function pura_single_property_shortcode() {
 
         </div>
 
-        <!-- ==================== TABS ==================== -->
-        <div class="pura-tabs-wrap">
+        <!-- ==================== CONTENT ==================== -->
+        <div class="pura-content-section">
+            <div class="pura-two-col">
 
-            <div class="pura-tabs-nav" role="tablist">
-                <button class="pura-tab active" data-tab="description" role="tab">DESCRIPTION</button>
-                <button class="pura-tab" data-tab="overview" role="tab">OVERVIEW</button>
-                <button class="pura-tab" data-tab="features" role="tab">FEATURES &amp; AMENITIES</button>
-                <button class="pura-tab" data-tab="downloads" role="tab">DOWNLOADS</button>
-            </div>
-
-            <!-- DESCRIPTION -->
-            <div class="pura-tab-content active" id="pura-tab-description">
-                <div class="pura-two-col">
-
-                    <div class="pura-description-col">
-                        <?php if (!empty($desc_paragraphs)): ?>
-                        <div class="pura-description-wrap" id="pura-desc-wrap">
-                            <h3 class="pura-col-heading">DESCRIPTION</h3>
-                            <div class="pura-description">
-                                <?php foreach (array_slice($desc_paragraphs, 0, 2) as $i => $para): ?>
-                                    <p class="<?php echo $i === 0 ? 'pura-desc-intro' : ''; ?>">
-                                        <?php echo esc_html($para); ?>
-                                    </p>
-                                <?php endforeach; ?>
-                            </div>
-                            <?php if (count($desc_paragraphs) > 2): ?>
-                                <div class="pura-desc-reveal" id="pura-desc-reveal">
-                                    <div class="pura-desc-reveal-inner">
-                                        <?php foreach (array_slice($desc_paragraphs, 2) as $para): ?>
-                                            <p><?php echo esc_html($para); ?></p>
-                                        <?php endforeach; ?>
-                                    </div>
-                                </div>
-                                <div class="pura-desc-fade" id="pura-desc-fade"></div>
-                                <div class="pura-read-more-wrap">
-                                    <button class="pura-read-more" id="pura-read-more-btn" onclick="puraToggleDesc()">
-                                        <span class="pura-rm-line"></span>
-                                        <span class="pura-rm-text">READ MORE</span>
-                                        <span class="pura-rm-line"></span>
-                                    </button>
-                                </div>
-                            <?php endif; ?>
+                <div class="pura-description-col">
+                    <?php if (!empty($desc_paragraphs)): ?>
+                    <div class="pura-description-wrap" id="pura-desc-wrap">
+                        <h3 class="pura-col-heading">Description</h3>
+                        <div class="pura-description">
+                            <?php foreach (array_slice($desc_paragraphs, 0, 2) as $i => $para): ?>
+                                <p class="<?php echo $i === 0 ? 'pura-desc-intro' : ''; ?>">
+                                    <?php echo esc_html($para); ?>
+                                </p>
+                            <?php endforeach; ?>
                         </div>
+                        <?php if (count($desc_paragraphs) > 2): ?>
+                            <div class="pura-desc-reveal" id="pura-desc-reveal">
+                                <div class="pura-desc-reveal-inner">
+                                    <?php foreach (array_slice($desc_paragraphs, 2) as $para): ?>
+                                        <p><?php echo esc_html($para); ?></p>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                            <div class="pura-desc-fade" id="pura-desc-fade"></div>
+                            <div class="pura-read-more-wrap">
+                                <button class="pura-read-more" id="pura-read-more-btn" onclick="puraToggleDesc()">
+                                    <span class="pura-rm-line"></span>
+                                    <span class="pura-rm-text">READ MORE</span>
+                                    <span class="pura-rm-line"></span>
+                                </button>
+                            </div>
                         <?php endif; ?>
                     </div>
+                    <?php endif; ?>
+                </div>
 
-                    <div class="pura-features-col">
-                        <?php if (!empty($features_array)): ?>
-                        <div class="pura-features-sidebar">
-                            <h3 class="pura-features-title">FEATURES &amp; AMENITIES</h3>
-                            <div class="pura-features-grid">
-                                <?php foreach ($features_array as $feature): ?>
-                                    <div class="pura-feature-item">
-                                        <span class="pura-feature-check">✓</span>
-                                        <span class="pura-feature-text">
-                                            <?php echo esc_html(strtoupper($feature)); ?>
-                                        </span>
-                                    </div>
-                                <?php endforeach; ?>
-                            </div>
+                <div class="pura-features-col">
+                    <?php if (!empty($features_array)): ?>
+                    <div class="pura-features-sidebar">
+                        <h3 class="pura-features-title">Features &amp; Amenities</h3>
+                        <div class="pura-features-grid">
+                            <?php foreach ($features_array as $feature): ?>
+                                <div class="pura-feature-item">
+                                    <span class="pura-feature-check">✓</span>
+                                    <span class="pura-feature-text">
+                                        <?php echo esc_html(strtoupper($feature)); ?>
+                                    </span>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
-                        <?php endif; ?>
                     </div>
-
+                    <?php endif; ?>
                 </div>
+
             </div>
-
-            <!-- OVERVIEW -->
-            <div class="pura-tab-content" id="pura-tab-overview">
-                <div class="pura-overview-grid">
-                    <?php if ($property_type): ?>
-                    <div class="pura-ov-item">
-                        <span class="pura-ov-label">TYPE</span>
-                        <span class="pura-ov-value"><?php echo esc_html($property_type); ?></span>
-                    </div>
-                    <?php endif; ?>
-                    <?php if ($location): ?>
-                    <div class="pura-ov-item">
-                        <span class="pura-ov-label">TOWN</span>
-                        <span class="pura-ov-value"><?php echo esc_html($location); ?></span>
-                    </div>
-                    <?php endif; ?>
-                    <?php if ($urbanisation): ?>
-                    <div class="pura-ov-item">
-                        <span class="pura-ov-label">URBANISATION</span>
-                        <span class="pura-ov-value"><?php echo esc_html($urbanisation); ?></span>
-                    </div>
-                    <?php endif; ?>
-                    <?php if ($province): ?>
-                    <div class="pura-ov-item">
-                        <span class="pura-ov-label">REGION</span>
-                        <span class="pura-ov-value"><?php echo esc_html($province); ?></span>
-                    </div>
-                    <?php endif; ?>
-                    <?php if ($size): ?>
-                    <div class="pura-ov-item">
-                        <span class="pura-ov-label">BUILT AREA</span>
-                        <span class="pura-ov-value"><?php echo esc_html($size); ?> m²</span>
-                    </div>
-                    <?php endif; ?>
-                    <?php if ($bedrooms): ?>
-                    <div class="pura-ov-item">
-                        <span class="pura-ov-label">BEDROOMS</span>
-                        <span class="pura-ov-value"><?php echo esc_html($bedrooms); ?></span>
-                    </div>
-                    <?php endif; ?>
-                    <?php if ($bathrooms): ?>
-                    <div class="pura-ov-item">
-                        <span class="pura-ov-label">BATHROOMS</span>
-                        <span class="pura-ov-value"><?php echo esc_html($bathrooms); ?></span>
-                    </div>
-                    <?php endif; ?>
-                    <div class="pura-ov-item">
-                        <span class="pura-ov-label">POOL</span>
-                        <span class="pura-ov-value"><?php echo $pool ? 'Yes' : 'No'; ?></span>
-                    </div>
-                    <?php if ($ref): ?>
-                    <div class="pura-ov-item">
-                        <span class="pura-ov-label">REFERENCE</span>
-                        <span class="pura-ov-value"><?php echo esc_html($ref); ?></span>
-                    </div>
-                    <?php endif; ?>
-                </div>
-
-                <?php if ($lat && $lng): ?>
-                <div class="pura-map-wrap">
-                    <iframe
-                        src="https://maps.google.com/maps?q=<?php echo esc_attr($lat . ',' . $lng); ?>&z=14&output=embed"
-                        loading="lazy" allowfullscreen title="Property location map">
-                    </iframe>
-                </div>
-                <?php endif; ?>
-            </div>
-
-            <!-- FEATURES TAB (standalone) -->
-            <div class="pura-tab-content" id="pura-tab-features">
-                <?php if (!empty($features_array)): ?>
-                <div class="pura-features-full">
-                    <?php foreach ($features_array as $feature): ?>
-                        <div class="pura-feature-item">
-                            <span class="pura-feature-check">✓</span>
-                            <span class="pura-feature-text">
-                                <?php echo esc_html(strtoupper($feature)); ?>
-                            </span>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-                <?php endif; ?>
-            </div>
-
-            <!-- DOWNLOADS TAB -->
-            <div class="pura-tab-content" id="pura-tab-downloads">
-                <div class="pura-downloads-wrap">
-                    <p class="pura-downloads-text">Property documents and floor plans are available on request.</p>
-                    <a href="/contact" class="pura-cta-btn">REQUEST DOCUMENTS</a>
-                </div>
-            </div>
-
         </div>
-        <!-- end tabs -->
 
     </div>
     <!-- end pura-property-wrap -->
