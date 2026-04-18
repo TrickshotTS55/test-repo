@@ -489,6 +489,18 @@ function pura_single_property_shortcode() {
             if (e.key === 'Escape')     puraCloseLightbox();
         });
 
+        // Inject centered logo into Elementor header (property pages only, no-op on homepage)
+        (function() {
+            var header = document.querySelector('header[data-elementor-type="header"]');
+            if (!header || header.querySelector('.pura-header-logo')) return;
+            header.style.position = 'relative';
+            var logo = document.createElement('a');
+            logo.href = '/';
+            logo.className = 'pura-header-logo';
+            logo.innerHTML = '<img src="https://puravida-realestate.es/wp-content/uploads/2026/03/Pura-Vida-Real-Estate-Logo-FINAL-Blue-v3.avif" alt="Pura Vida Real Estate">';
+            header.appendChild(logo);
+        })();
+
     })();
     </script>
 

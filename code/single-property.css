@@ -712,6 +712,38 @@
 }
 
 /* ==========================================================
+   HEADER LOGO — centered, property pages only
+   Injected via JS in the shortcode; invisible on homepage
+   ========================================================== */
+.pura-property-page header[data-elementor-type="header"] {
+    overflow: visible !important;
+}
+
+.pura-header-logo {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 200;
+    display: block !important;
+    line-height: 0 !important;
+    text-decoration: none !important;
+    pointer-events: auto;
+}
+
+.pura-header-logo img {
+    height: 58px;
+    width: auto;
+    display: block;
+}
+
+@media (max-width: 767px) {
+    .pura-header-logo img {
+        height: 42px;
+    }
+}
+
+/* ==========================================================
    NAVIGATION — dark text ONLY on property single + archive
    Uses both the custom pura-property-page class (added via PHP body_class filter)
    and the WP-generated body classes as fallback
