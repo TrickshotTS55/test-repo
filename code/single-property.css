@@ -191,12 +191,14 @@
 }
 
 .pura-spec-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    color: rgba(34, 52, 75, 0.5);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 6px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(34, 52, 75, 0.55);
+    letter-spacing: 0.01em;
+    text-transform: none;
+    margin-bottom: 10px;
 }
 
 .pura-spec-value {
@@ -208,7 +210,7 @@
 
 .pura-spec-icon {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     line-height: 1;
 }
 

@@ -183,22 +183,46 @@ function pura_single_property_shortcode() {
                 <div class="pura-specs">
                     <?php if ($bedrooms): ?>
                     <div class="pura-spec">
-                        <span class="pura-spec-icon"><svg width="20" height="13" viewBox="0 0 20 13" fill="none"><rect x="1" y="1" width="18" height="7" rx="1" stroke="#C9A84C" stroke-opacity="1" stroke-width="1.3"/><rect x="2.5" y="2.5" width="5" height="4" rx="0.5" stroke="#C9A84C" stroke-opacity="1" stroke-width="1.1"/><rect x="12.5" y="2.5" width="5" height="4" rx="0.5" stroke="#C9A84C" stroke-opacity="1" stroke-width="1.1"/><path d="M1 8v4M19 8v4" stroke="#C9A84C" stroke-opacity="1" stroke-width="1.3" stroke-linecap="round"/></svg></span>
-                        <span class="pura-spec-label">BEDROOMS</span>
+                        <span class="pura-spec-label">Bedrooms</span>
+                        <span class="pura-spec-icon">
+                            <svg width="48" height="36" viewBox="0 0 48 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 22V9C9 8.4 9.4 8 10 8h28c.6 0 1 .4 1 1v13" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                                <rect x="11" y="13" width="11" height="7" rx="2" stroke="#C9A84C" stroke-width="1.3" fill="none"/>
+                                <rect x="26" y="13" width="11" height="7" rx="2" stroke="#C9A84C" stroke-width="1.3" fill="none"/>
+                                <rect x="4" y="22" width="40" height="8" rx="1.5" stroke="#C9A84C" stroke-width="1.5" fill="none"/>
+                                <line x1="10" y1="30" x2="10" y2="35" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+                                <line x1="38" y1="30" x2="38" y2="35" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </span>
                         <span class="pura-spec-value"><?php echo esc_html($bedrooms); ?></span>
                     </div>
                     <?php endif; ?>
                     <?php if ($bathrooms): ?>
                     <div class="pura-spec">
-                        <span class="pura-spec-icon"><svg width="18" height="15" viewBox="0 0 18 15" fill="none"><path d="M3 1v6" stroke="#C9A84C" stroke-opacity="1" stroke-width="1.3" stroke-linecap="round"/><circle cx="3" cy="3" r="1.5" stroke="#C9A84C" stroke-opacity="1" stroke-width="1.1"/><rect x="1" y="7" width="16" height="3" rx="1" stroke="#C9A84C" stroke-opacity="1" stroke-width="1.3" fill="none"/><path d="M4 10v3M14 10v3" stroke="#C9A84C" stroke-opacity="1" stroke-width="1.3" stroke-linecap="round"/></svg></span>
-                        <span class="pura-spec-label">BATHROOMS</span>
+                        <span class="pura-spec-label">Bathrooms</span>
+                        <span class="pura-spec-icon">
+                            <svg width="48" height="36" viewBox="0 0 48 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <line x1="7" y1="16" x2="42" y2="16" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M7 16 Q5 16 4 19 L4 23 Q4 28 24 28 Q44 28 44 23 L44 19 Q43 16 41 16" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                                <path d="M11 28 Q10 31 9 33" stroke="#C9A84C" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+                                <path d="M20 28 Q20 31 19 33" stroke="#C9A84C" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+                                <path d="M28 28 Q28 31 29 33" stroke="#C9A84C" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+                                <path d="M37 28 Q38 31 39 33" stroke="#C9A84C" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+                                <path d="M7 16 L7 9 L11 9 L11 16" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            </svg>
+                        </span>
                         <span class="pura-spec-value"><?php echo esc_html($bathrooms); ?></span>
                     </div>
                     <?php endif; ?>
                     <?php if ($size): ?>
                     <div class="pura-spec">
-                        <span class="pura-spec-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 5V1h4M11 1h4v4M15 11v4h-4M5 15H1v-4" stroke="#C9A84C" stroke-opacity="1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                         <span class="pura-spec-label">m²</span>
+                        <span class="pura-spec-icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="3" y="3" width="34" height="34" rx="3" stroke="#C9A84C" stroke-width="1.5" fill="none"/>
+                                <text x="20" y="27" text-anchor="middle" font-family="Georgia, Times, serif" font-size="13" font-weight="400" fill="#C9A84C">m<tspan dy="-5" font-size="9">2</tspan></text>
+                            </svg>
+                        </span>
                         <span class="pura-spec-value"><?php echo esc_html($size); ?></span>
                     </div>
                     <?php endif; ?>
