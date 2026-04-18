@@ -184,14 +184,14 @@ function pura_single_property_shortcode() {
                     <?php if ($bedrooms): ?>
                     <div class="pura-spec">
                         <span class="pura-spec-icon"><svg width="20" height="13" viewBox="0 0 20 13" fill="none"><rect x="1" y="1" width="18" height="7" rx="1" stroke="#C9A84C" stroke-opacity="1" stroke-width="1.3"/><rect x="2.5" y="2.5" width="5" height="4" rx="0.5" stroke="#C9A84C" stroke-opacity="1" stroke-width="1.1"/><rect x="12.5" y="2.5" width="5" height="4" rx="0.5" stroke="#C9A84C" stroke-opacity="1" stroke-width="1.1"/><path d="M1 8v4M19 8v4" stroke="#C9A84C" stroke-opacity="1" stroke-width="1.3" stroke-linecap="round"/></svg></span>
-                        <span class="pura-spec-label">BEDS</span>
+                        <span class="pura-spec-label">BEDROOMS</span>
                         <span class="pura-spec-value"><?php echo esc_html($bedrooms); ?></span>
                     </div>
                     <?php endif; ?>
                     <?php if ($bathrooms): ?>
                     <div class="pura-spec">
                         <span class="pura-spec-icon"><svg width="18" height="15" viewBox="0 0 18 15" fill="none"><path d="M3 1v6" stroke="#C9A84C" stroke-opacity="1" stroke-width="1.3" stroke-linecap="round"/><circle cx="3" cy="3" r="1.5" stroke="#C9A84C" stroke-opacity="1" stroke-width="1.1"/><rect x="1" y="7" width="16" height="3" rx="1" stroke="#C9A84C" stroke-opacity="1" stroke-width="1.3" fill="none"/><path d="M4 10v3M14 10v3" stroke="#C9A84C" stroke-opacity="1" stroke-width="1.3" stroke-linecap="round"/></svg></span>
-                        <span class="pura-spec-label">BATHS</span>
+                        <span class="pura-spec-label">BATHROOMS</span>
                         <span class="pura-spec-value"><?php echo esc_html($bathrooms); ?></span>
                     </div>
                     <?php endif; ?>
