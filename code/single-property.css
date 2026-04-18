@@ -215,7 +215,7 @@
 }
 
 .pura-spec-icon svg {
-    width: 90px !important;
+    width: 50px !important;
     height: auto !important;
 }
 
@@ -459,7 +459,7 @@
 
 .pura-feature-item {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 8px;
 }
 
@@ -759,7 +759,7 @@
     height: 84px;
     width: auto;
     display: block;
-    margin-top: 60px;
+    margin-top: 100px;
 }
 
 @media (max-width: 767px) {
